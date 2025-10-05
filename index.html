@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع ضيوف الحرمين - قريباً</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* التنسيقات العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a5e1a 0%, #0d3d0d 100%);
+            color: #f8f8f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            z-index: 10;
+        }
+        
+        /* الشعار والعنوان */
+        .logo {
+            margin-bottom: 30px;
+        }
+        
+        .logo-icon {
+            font-size: 80px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #f8f8f8;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: #d4af37;
+            font-weight: 300;
+        }
+        
+        /* رسالة تحت الإنشاء */
+        .message {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .message h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+        
+        .message p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* العداد */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 15px 10px;
+            min-width: 80px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        /* زر التواصل عبر واتساب */
+        .whatsapp-contact {
+            margin: 40px 0;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .whatsapp-button i {
+            font-size: 1.4rem;
+        }
+        
+        /* العناصر المتحركة */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 24px;
+            animation: float 15s infinite linear;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .floating-element:nth-child(4) {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+        
+        .floating-element:nth-child(5) {
+            top: 40%;
+            left: 5%;
+            animation-delay: 8s;
+        }
+        
+        .floating-element:nth-child(6) {
+            top: 60%;
+            right: 5%;
+            animation-delay: 10s;
+        }
+        
+        /* الرسوم المتحركة */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+            }
+        }
+        
+        /* التكيف مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- العناصر المتحركة الخلفية -->
+    <div class="floating-elements">
+        <div class="floating-element">🕋</div>
+        <div class="floating-element">🕌</div>
+        <div class="floating-element">📖</div>
+        <div class="floating-element">☪️</div>
+        <div class="floating-element">🕋</div>
+        <div class="floating-element">🕌</div>
+    </div>
+    
+    <div class="container">
+        <!-- الشعار والعنوان -->
+        <div class="logo">
+            <div class="logo-icon">🕋</div>
+            <h1>موقع ضيوف الحرمين</h1>
+            <div class="subtitle">نعمل على خدمتكم بأفضل صورة</div>
+        </div>
+        
+        <!-- رسالة تحت الإنشاء -->
+        <div class="message">
+            <h2>نحن قادمون قريباً!</h2>
+            <p>نعمل حالياً على تطوير موقع ضيوف الحرمين لتقديم أفضل الخدمات لضيوف الرحمن. نرجو منكم متابعتنا للاطلاع على آخر التحديثات.</p>
+            <p>نسعى لنكون عوناً لضيوف بيت الله الحرام ومساعدتهم في أداء مناسكهم بكل يسر وسهولة.</p>
+        </div>
+        
+        <!-- العداد التنازلي -->
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">أيام</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">ساعات</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">دقائق</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">ثواني</div>
+            </div>
+        </div>
+        
+        <!-- زر التواصل عبر واتساب -->
+        <div class="whatsapp-contact">
+            <a href="https://wa.me/966541392197" class="whatsapp-button" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                تواصل معنا عبر واتساب: 0541392197
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // حساب تاريخ بعد يومين من الآن
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 2);
+        targetDate.setHours(23, 59, 59, 0); // الساعة 11:59:59 مساءً
+        
+        // العداد التنازلي
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // تحديث العداد كل ثانية
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // تأثيرات إضافية عند التمرير
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-element');
+            
+            parallaxElements.forEach(function(element, index) {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
