@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ضيوف الحرمين">
+  <!-- أيقونة الكعبة مع هالة ذهبية -->
+  <g transform="translate(0,4)">
+    <rect x="6" y="4" width="32" height="32" rx="4" fill="#1a5276"/>
+    <rect x="12" y="18" width="20" height="12" fill="#d4af37"/>
+    <rect x="14" y="12" width="16" height="6" fill="#0f3650" opacity="0.8"/>
+    <circle cx="22" cy="20" r="22" stroke="#d4af37" stroke-width="1.5" opacity="0.35"/>
+  </g>
+  <!-- اسم العلامة -->
+  <g fill="#2c3e50" font-family="Tajawal, Arial, sans-serif" font-weight="700">
+    <text x="48" y="28" font-size="20">ضيوف الحرمين</text>
+  </g>
+</svg>
