@@ -3,17 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a5276">
     <title>ضيوف الحرمين - رحلات العمرة من الرياض</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a5276'/%3E%3Crect x='14' y='18' width='36' height='28' rx='3' fill='%232c3e50'/%3E%3Crect x='14' y='26' width='36' height='6' fill='%23d4af37'/%3E%3Crect x='28' y='30' width='8' height='12' fill='white'/%3E%3C/svg%3E">
     <style>
         /* الأساسيات */
         :root {
-            --primary: #1a5276;
-            --secondary: #d4af37;
-            --light: #f8f9fa;
-            --dark: #2c3e50;
+            /* لوحة الألوان */
+            --primary: #1a5276; /* أزرق عميق */
+            --primary-700: #164763;
+            --primary-800: #123b53;
+            --secondary: #d4af37; /* ذهبي */
+            --secondary-600: #c49b20;
+            --secondary-700: #b08916;
             --accent: #a67c00;
+
+            /* ألوان الواجهة */
+            --bg: #f5f6f8;
+            --surface: #ffffff;
+            --surface-2: #f8f9fa;
+            --text: #222;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --ring: #93c5fd;
+
+            /* أزرار اجتماعية */
+            --whatsapp: #25D366;
+            --whatsapp-600: #1ebe5d;
+
+            /* الشكل والظل */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 2px 6px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 40px rgba(0,0,0,0.16);
+        }
+
+        html[data-theme='dark'] {
+            --bg: #0f172a;
+            --surface: #0b1222;
+            --surface-2: #111a2e;
+            --text: #e5e7eb;
+            --muted: #9aa4b2;
+            --border: #1f2937;
+            --ring: #60a5fa;
+            --primary: #1b6a99;
+            --primary-700: #16587e;
+            --primary-800: #124968;
+            --secondary: #e6c76a;
+            --secondary-600: #dcbc4f;
+            --secondary-700: #cfb03a;
+            --whatsapp: #22c55e;
+            --whatsapp-600: #16a34a;
         }
         
         * {
@@ -28,8 +72,8 @@
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -43,27 +87,31 @@
         
         /* الهيدر مع القائمة المنسدلة */
         header {
-            background: linear-gradient(rgba(26, 82, 118, 0.95), rgba(26, 82, 118, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a5276"/><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="%23d4af37" opacity="0.1"/></svg>');
-            background-size: cover;
+            --header-bg: var(--primary);
+            background: linear-gradient(rgba(26,82,118,0.96), rgba(26,82,118,0.92));
             color: white;
             padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            animation: headerBackground 20s infinite linear;
             transition: all 0.3s ease;
         }
         
         header.scrolled {
             padding: 10px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+            background: linear-gradient(rgba(18,57,83,0.98), rgba(18,57,83,0.94));
         }
         
-        @keyframes headerBackground {
-            0% { background-position: 0 0; }
-            100% { background-position: 100px 100px; }
+        /* شعار الموقع */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            animation: logoSlide 0.8s ease-out;
         }
         
         .header-content {
@@ -72,30 +120,25 @@
             align-items: center;
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            animation: logoSlide 1s ease-out;
-        }
-        
         @keyframes logoSlide {
             0% { transform: translateX(100px); opacity: 0; }
             100% { transform: translateX(0); opacity: 1; }
         }
         
-        .logo i {
-            font-size: 2.5rem;
+        .logo-mark {
+            width: 38px;
+            height: 38px;
             margin-left: 10px;
-            color: var(--secondary);
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
         }
         
         .logo h1 {
-            font-size: 1.8rem;
+            font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
             font-weight: 700;
         }
         
         /* القائمة المنسدلة */
-        .menu-toggle {
+        .menu-toggle, .theme-toggle {
             display: none;
             background: none;
             border: none;
@@ -105,8 +148,14 @@
             transition: transform 0.3s;
         }
         
-        .menu-toggle:hover {
+        .menu-toggle:hover, .theme-toggle:hover {
             transform: scale(1.1);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         nav ul {
@@ -151,13 +200,13 @@
         
         /* البانر الرئيسي مع النص المتغير */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://tawaf-kaaba.site/img/66.png');
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://tawaf-kaaba.site/img/66.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: white;
             text-align: center;
-            padding: 200px 0 120px;
+            padding: clamp(160px, 22vh, 220px) 0 120px;
             margin-bottom: 50px;
             position: relative;
             overflow: hidden;
@@ -181,7 +230,7 @@
         }
         
         .hero h2 {
-            font-size: 2.8rem;
+            font-size: clamp(1.6rem, 3.2vw + 1rem, 3rem);
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             min-height: 120px;
@@ -209,7 +258,7 @@
             align-items: center;
             justify-content: center;
             background-color: var(--secondary);
-            color: var(--dark);
+            color: #1f2937;
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
@@ -218,7 +267,7 @@
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
         }
@@ -238,10 +287,26 @@
             right: 100%;
         }
         
-        .btn:hover {
-            background-color: #e6c12e;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        .btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--ring);
+        }
+
+        /* حالات التحويم لكل نوع زر */
+        .btn.btn-whatsapp { background-color: var(--whatsapp); color: white; }
+        .btn.btn-whatsapp:hover { background-color: var(--whatsapp-600); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+        .btn.btn-phone { background-color: var(--primary); color: white; }
+        .btn.btn-phone:hover { background-color: var(--primary-700); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+        .btn.btn-price { background-color: var(--accent); color: white; }
+        .btn.btn-price:hover { background-color: #8f6800; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+        /* زر افتراضي ذهبي (للروابط العامة) */
+        .btn:not(.btn-whatsapp):not(.btn-phone):not(.btn-price):hover {
+            background-color: var(--secondary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .btn-whatsapp {
@@ -369,9 +434,7 @@
         }
         
         /* قسم الباقات */
-        .packages {
-            background-color: white;
-        }
+        .packages { background-color: var(--surface); }
         
         .packages-grid {
             display: grid;
@@ -380,12 +443,12 @@
         }
         
         .package-card {
-            background-color: white;
-            border-radius: 10px;
+            background-color: var(--surface);
+            border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
-            border: 1px solid #eee;
+            border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             transform: translateY(20px);
@@ -403,8 +466,8 @@
         }
         
         .package-header {
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--surface-2);
+            color: var(--text);
             padding: 20px;
             text-align: center;
             display: flex;
@@ -412,11 +475,7 @@
             align-items: center;
         }
         
-        .package-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
+        .package-icon { font-size: 2.5rem; margin-bottom: 15px; color: var(--secondary); }
         
         .package-header h3 {
             font-size: 1.5rem;
@@ -482,8 +541,8 @@
         .feature {
             text-align: center;
             padding: 30px 20px;
-            background-color: white;
-            border-radius: 10px;
+            background-color: var(--surface);
+            border-radius: var(--radius-md);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s;
             transform: translateY(20px);
@@ -518,9 +577,7 @@
         }
         
         /* قسم الفنادق - 4 كروت */
-        .hotels {
-            background-color: white;
-        }
+        .hotels { background-color: var(--surface); }
         
         .hotels-grid {
             display: grid;
@@ -529,8 +586,8 @@
         }
         
         .hotel-card {
-            background-color: white;
-            border-radius: 10px;
+            background-color: var(--surface);
+            border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
@@ -626,9 +683,7 @@
         }
         
         /* قسم الباصات - كرتين فقط */
-        .buses {
-            background-color: #f8f9fa;
-        }
+        .buses { background-color: var(--surface-2); }
         
         .buses-grid {
             display: grid;
@@ -742,7 +797,7 @@
         
         /* الفوتر */
         footer {
-            background-color: var(--dark);
+            background-color: var(--primary-800);
             color: white;
             padding: 60px 0 30px;
         }
@@ -773,7 +828,7 @@
         }
         
         .footer-column p, .footer-column a {
-            color: #ccc;
+            color: #c7d2fe;
             margin-bottom: 10px;
             display: block;
             text-decoration: none;
@@ -812,7 +867,7 @@
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
+            color: #cbd5e1;
             font-size: 0.9rem;
         }
         
@@ -832,9 +887,7 @@
         
         /* التجاوب مع الشاشات المختلفة */
         @media (max-width: 992px) {
-            .menu-toggle {
-                display: block;
-            }
+            .menu-toggle, .theme-toggle { display: block; }
             
             nav ul {
                 display: none;
@@ -915,6 +968,9 @@
             }
         }
         
+        /* تحسين هوامش التمرير للأقسام مع هيدر ثابت */
+        section { scroll-margin-top: 100px; }
+
         /* SVG متحرك */
         .floating-svg {
             position: absolute;
@@ -941,6 +997,11 @@
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
         }
+
+        /* احترام تفضيل تقليل الحركة */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -948,15 +1009,24 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-mosque"></i>
+                <a class="logo" href="#" aria-label="الصفحة الرئيسية">
+                    <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="10" y="18" width="44" height="28" rx="6" fill="#0b1320"/>
+                        <rect x="10" y="26" width="44" height="6" fill="var(--secondary)"/>
+                        <rect x="28" y="30" width="8" height="12" fill="#ffffff"/>
+                    </svg>
                     <h1>ضيوف الحرمين</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="تبديل الوضع" title="تبديل الوضع">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="primary-nav">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
-                <button class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
                 <nav>
-                    <ul>
+                    <ul id="primary-nav">
                         <li><a href="#packages">الباقات</a></li>
                         <li><a href="#why-us">لماذا تختارنا</a></li>
                         <li><a href="#hotels">الفنادق</a></li>
@@ -989,7 +1059,7 @@
                 <p>نقدم لكم أفضل باقات العمرة مع خدمات راقية تناسب جميع الاحتياجات، لنضمن لكم رحلة روحانية لا تُنسى</p>
                 
                 <div class="hero-buttons">
-                    <a href="https://wa.me/966541392197" class="btn btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/966541392197" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-whatsapp"></i>
                         تواصل عبر واتساب
                     </a>
@@ -1004,7 +1074,7 @@
 
     <!-- أزرار التواصل -->
     <div class="contact-buttons">
-        <a href="https://wa.me/966541392197" class="contact-btn whatsapp" target="_blank">
+        <a href="https://wa.me/966541392197" class="contact-btn whatsapp" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-whatsapp"></i>
             <span>تواصل عبر واتساب</span>
         </a>
@@ -1037,7 +1107,7 @@
                             <li><i class="fas fa-bus"></i> باصات حديثة ومكيفة</li>
                         </ul>
                         <div class="package-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن الباقة الاقتصادية" class="btn btn-whatsapp" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن الباقة الاقتصادية" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-whatsapp"></i>
                                 واتساب
                             </a>
@@ -1065,7 +1135,7 @@
                             <li><i class="fas fa-user-cog"></i> إمكانية تخصيص المواعيد</li>
                         </ul>
                         <div class="package-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن باقة VIP" class="btn btn-whatsapp" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن باقة VIP" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-whatsapp"></i>
                                 واتساب
                             </a>
@@ -1093,7 +1163,7 @@
                             <li><i class="fas fa-gift"></i> توفير أفضل العروض والخدمات</li>
                         </ul>
                         <div class="package-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن حجز الفنادق" class="btn btn-whatsapp" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن حجز الفنادق" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-whatsapp"></i>
                                 واتساب
                             </a>
@@ -1175,7 +1245,7 @@
                             </div>
                         </div>
                         <div class="hotel-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق إم هوتل مكة باي ميلينيوم" class="btn btn-price" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق إم هوتل مكة باي ميلينيوم" class="btn btn-price" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-tag"></i>
                                 استفسار عن الأسعار
                             </a>
@@ -1212,7 +1282,7 @@
                             </div>
                         </div>
                         <div class="hotel-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فوكو مكة (إيه آي جيه هوتيل)" class="btn btn-price" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فوكو مكة (إيه آي جيه هوتيل)" class="btn btn-price" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-tag"></i>
                                 استفسار عن الأسعار
                             </a>
@@ -1249,7 +1319,7 @@
                             </div>
                         </div>
                         <div class="hotel-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق مكة" class="btn btn-price" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق مكة" class="btn btn-price" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-tag"></i>
                                 استفسار عن الأسعار
                             </a>
@@ -1286,7 +1356,7 @@
                             </div>
                         </div>
                         <div class="hotel-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق فلسطين مكة" class="btn btn-price" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق فلسطين مكة" class="btn btn-price" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-tag"></i>
                                 استفسار عن الأسعار
                             </a>
@@ -1341,7 +1411,7 @@
                             </div>
                         </div>
                         <div class="bus-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن الباصات الاقتصادية" class="btn btn-whatsapp" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن الباصات الاقتصادية" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-whatsapp"></i>
                                 واتساب
                             </a>
@@ -1390,7 +1460,7 @@
                             </div>
                         </div>
                         <div class="bus-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن باصات VIP الفاخرة" class="btn btn-whatsapp" target="_blank">
+                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن باصات VIP الفاخرة" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-whatsapp"></i>
                                 واتساب
                             </a>
@@ -1413,10 +1483,10 @@
                     <h3>عن ضيوف الحرمين</h3>
                     <p>نحن متخصصين في رحلات العمرة من الرياض، نقدم خدمات مميزة تناسب جميع الاحتياجات مع الحفاظ على الجودة والروحانية.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -1435,16 +1505,63 @@
             </div>
             <div class="copyright">
                 <p>جميع الحقوق محفوظة &copy; 2025 ضيوف الحرمين</p>
-                <p class="designer">تصميم وإنشاء <a href="https://wa.me/201025116712" target="_blank">عبدالله محمد</a></p>
+                <p class="designer">تصميم وإنشاء <a href="https://wa.me/201025116712" target="_blank" rel="noopener noreferrer">عبدالله محمد</a></p>
             </div>
         </div>
     </footer>
 
     <script>
+        // إعداد الوضع الداكن
+        const rootEl = document.documentElement;
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark') {
+            rootEl.setAttribute('data-theme', 'dark');
+        }
+
+        function updateThemeColorMeta() {
+            const meta = document.querySelector('meta[name="theme-color"]');
+            const isDark = rootEl.getAttribute('data-theme') === 'dark';
+            meta.setAttribute('content', isDark ? '#123b53' : '#1a5276');
+        }
+        updateThemeColorMeta();
+
         // القائمة المنسدلة
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('show');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navList = document.getElementById('primary-nav');
+        menuToggle.addEventListener('click', function() {
+            const willShow = !navList.classList.contains('show');
+            navList.classList.toggle('show');
+            menuToggle.setAttribute('aria-expanded', String(willShow));
         });
+        // إغلاق القائمة بعد اختيار رابط (على المحمول)
+        navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            if (getComputedStyle(menuToggle).display !== 'none') {
+                navList.classList.remove('show');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        }));
+
+        // تبديل الوضع
+        const themeBtn = document.querySelector('.theme-toggle');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const isDark = rootEl.getAttribute('data-theme') === 'dark';
+                if (isDark) {
+                    rootEl.removeAttribute('data-theme');
+                    localStorage.setItem('theme', 'light');
+                    themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+                } else {
+                    rootEl.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                }
+                updateThemeColorMeta();
+            });
+            // حالة الأيقونة الابتدائية
+            if (rootEl.getAttribute('data-theme') === 'dark') {
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
         
         // النص المتغير في الهيرو
         const texts = [
