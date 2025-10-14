@@ -1,0 +1,4 @@
+    "user_agents": "",
+    "rules": [],
+    "crawl_delay": null,
+    "sitemap": "https://tareq-aleyman.online/sitemap.xml"
