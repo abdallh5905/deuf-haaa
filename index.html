@@ -226,20 +226,49 @@
         /* البانر الرئيسي مع النص المتغير */
         .hero {
             background:
-                radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 30%, rgba(245, 158, 11, 0.20) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.10) 0%, transparent 70%),
-                linear-gradient(135deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.50) 100%),
+                radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.25) 0%, transparent 60%),
+                radial-gradient(circle at 80% 30%, rgba(245, 158, 11, 0.30) 0%, transparent 55%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.20) 0%, transparent 80%),
+                linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.60) 100%),
+                linear-gradient(45deg, 
+                    rgba(37, 99, 235, 0.1) 0%, 
+                    rgba(245, 158, 11, 0.1) 25%, 
+                    rgba(16, 185, 129, 0.1) 50%, 
+                    rgba(37, 99, 235, 0.1) 75%, 
+                    rgba(245, 158, 11, 0.1) 100%),
                 url('https://tawaf-kaaba.site/img/66.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-size: cover, cover, cover, cover, 200px 200px, cover;
+            background-position: center, center, center, center, 0 0, center;
+            background-attachment: fixed, fixed, fixed, fixed, scroll, fixed;
             color: white;
             text-align: center;
             padding: clamp(160px, 22vh, 220px) 0 110px;
             margin-bottom: 50px;
             position: relative;
             overflow: hidden;
+        }
+        
+        /* إضافة نمط هندسي متحرك للخلفية */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            animation: backgroundShift 20s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(-20px) translateY(-10px) rotate(1deg); }
+            50% { transform: translateX(20px) translateY(10px) rotate(-1deg); }
+            75% { transform: translateX(-10px) translateY(20px) rotate(0.5deg); }
         }
 
         /* شكل سفلي مائل للهيرو ليبدو أكثر تميزاً */
@@ -295,6 +324,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        
+        /* تأثير الكتابة المتدرجة للنص المتغير */
+        .hero h2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: textShimmer 3s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes textShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
         }
         
         .hero p {
@@ -1161,38 +1213,72 @@
         /* تحسين هوامش التمرير للأقسام مع هيدر ثابت */
         section { scroll-margin-top: 100px; }
 
-        /* SVG متحرك */
+        /* SVG متحرك محسن */
         .floating-svg {
             position: absolute;
             z-index: 1;
-            opacity: 0.7;
+            opacity: 0.8;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            transition: all 0.3s ease;
+        }
+        
+        .floating-svg:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
         }
         
         .kaaba-svg {
-            top: 10%;
-            left: 5%;
-            width: 100px;
-            animation: float 6s ease-in-out infinite;
+            top: 8%;
+            left: 3%;
+            width: 120px;
+            animation: floatKaaba 8s ease-in-out infinite;
         }
         
         .bus-svg {
-            bottom: 10%;
-            right: 5%;
-            width: 120px;
-            animation: float 8s ease-in-out infinite;
+            bottom: 8%;
+            right: 3%;
+            width: 140px;
+            animation: floatBus 10s ease-in-out infinite;
         }
-
-        /* تلوين SVG وفق اللوحة الجديدة */
-        .kaaba-svg path { fill: var(--secondary); }
-        .kaaba-svg rect { fill: var(--primary); }
-        .bus-svg rect:nth-of-type(1) { fill: var(--primary); }
-        .bus-svg rect:nth-of-type(2) { fill: var(--secondary); }
-        .bus-svg rect:nth-of-type(3) { fill: #fff; }
         
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        @keyframes floatKaaba {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-15px) rotate(2deg); 
+            }
+            50% { 
+                transform: translateY(-25px) rotate(0deg); 
+            }
+            75% { 
+                transform: translateY(-10px) rotate(-1deg); 
+            }
+        }
+        
+        @keyframes floatBus {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            30% { 
+                transform: translateY(-20px) rotate(1deg); 
+            }
+            60% { 
+                transform: translateY(-30px) rotate(-1deg); 
+            }
+            80% { 
+                transform: translateY(-15px) rotate(0.5deg); 
+            }
+        }
+        
+        /* تأثيرات إضافية للـ SVG */
+        .kaaba-svg:hover {
+            animation-play-state: paused;
+        }
+        
+        .bus-svg:hover {
+            animation-play-state: paused;
         }
 
         /* احترام تفضيل تقليل الحركة */
@@ -1236,18 +1322,66 @@
 
     <!-- البانر الرئيسي -->
     <section class="hero">
-        <!-- SVG متحرك -->
+        <!-- SVG متحرك محسن -->
         <svg class="floating-svg kaaba-svg" viewBox="0 0 100 100">
-            <path fill="#d4af37" d="M50,10 L70,30 L70,70 L30,70 L30,30 Z" />
-            <rect fill="#1a5276" x="40" y="30" width="20" height="40" />
+            <!-- الكعبة المشرفة -->
+            <defs>
+                <linearGradient id="kaabaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#d97706;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#b45309;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="kaabaBase" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <!-- قاعدة الكعبة -->
+            <rect x="25" y="60" width="50" height="15" rx="3" fill="url(#kaabaBase)"/>
+            <!-- الكعبة -->
+            <rect x="30" y="25" width="40" height="35" rx="2" fill="url(#kaabaGradient)"/>
+            <!-- الحجر الأسود -->
+            <circle cx="50" cy="30" r="3" fill="#000"/>
+            <!-- باب الكعبة -->
+            <rect x="45" y="35" width="10" height="20" fill="url(#kaabaBase)"/>
+            <!-- تفاصيل إضافية -->
+            <rect x="35" y="28" width="30" height="2" fill="url(#kaabaBase)"/>
+            <rect x="35" y="32" width="30" height="1" fill="url(#kaabaBase)"/>
+            <rect x="35" y="35" width="30" height="1" fill="url(#kaabaBase)"/>
         </svg>
         
         <svg class="floating-svg bus-svg" viewBox="0 0 100 100">
-            <rect x="10" y="30" width="80" height="40" rx="5" fill="#1a5276"/>
-            <rect x="15" y="35" width="70" height="20" fill="#d4af37" opacity="0.7"/>
-            <circle cx="25" cy="75" r="8" fill="#333"/>
-            <circle cx="75" cy="75" r="8" fill="#333"/>
-            <rect x="60" y="40" width="20" height="10" fill="#fff"/>
+            <defs>
+                <linearGradient id="busGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="busAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <!-- هيكل الباص -->
+            <rect x="8" y="25" width="84" height="45" rx="8" fill="url(#busGradient)"/>
+            <!-- النوافذ -->
+            <rect x="15" y="30" width="70" height="25" rx="3" fill="url(#busAccent)" opacity="0.8"/>
+            <rect x="18" y="33" width="64" height="19" rx="2" fill="#87CEEB" opacity="0.9"/>
+            <!-- خطوط النوافذ -->
+            <line x1="50" y1="33" x2="50" y2="52" stroke="#2563eb" stroke-width="1"/>
+            <line x1="18" y1="42" x2="82" y2="42" stroke="#2563eb" stroke-width="1"/>
+            <!-- العجلات -->
+            <circle cx="25" cy="75" r="10" fill="#333"/>
+            <circle cx="25" cy="75" r="6" fill="#666"/>
+            <circle cx="75" cy="75" r="10" fill="#333"/>
+            <circle cx="75" cy="75" r="6" fill="#666"/>
+            <!-- المصابيح الأمامية -->
+            <circle cx="12" cy="40" r="3" fill="#FFD700"/>
+            <circle cx="88" cy="40" r="3" fill="#FFD700"/>
+            <!-- المصابيح الخلفية -->
+            <circle cx="12" cy="50" r="2" fill="#FF4444"/>
+            <circle cx="88" cy="50" r="2" fill="#FF4444"/>
+            <!-- باب الباص -->
+            <rect x="45" y="35" width="10" height="20" fill="url(#busGradient)" opacity="0.7"/>
         </svg>
         
         <div class="container">
@@ -1760,7 +1894,7 @@
             }
         }
         
-        // النص المتغير في الهيرو
+        // النص المتغير في الهيرو مع تأثيرات ديناميكية
         const texts = [
             "رحلات عمرة مميزة من الرياض إلى مكة المكرمة",
             "خدمات راقية تناسب جميع احتياجاتكم",
@@ -1772,12 +1906,23 @@
         const changingText = document.getElementById('changing-text');
         
         function changeText() {
-            changingText.style.opacity = 0;
+            // تأثير الخروج - تحريك النص لأعلى مع تدوير
+            changingText.style.transform = 'translateY(30px) rotateX(90deg)';
+            changingText.style.opacity = '0';
+            
             setTimeout(() => {
                 currentTextIndex = (currentTextIndex + 1) % texts.length;
                 changingText.textContent = texts[currentTextIndex];
-                changingText.style.opacity = 1;
-            }, 500);
+                
+                // تأثير الدخول - تحريك النص من الأسفل مع تدوير
+                changingText.style.transform = 'translateY(-30px) rotateX(-90deg)';
+                changingText.style.opacity = '0';
+                
+                setTimeout(() => {
+                    changingText.style.transform = 'translateY(0) rotateX(0deg)';
+                    changingText.style.opacity = '1';
+                }, 50);
+            }, 600);
         }
         
         setInterval(changeText, 4000);
