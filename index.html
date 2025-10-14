@@ -3,61 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#047857">
+    <meta name="theme-color" content="#2563eb">
     <title>طريق الإيمان - رحلات العمرة من الرياض</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23047857'/%3E%3Crect x='14' y='18' width='36' height='28' rx='3' fill='%230b1320'/%3E%3Crect x='14' y='26' width='36' height='6' fill='%23f59e0b'/%3E%3Crect x='28' y='30' width='8' height='12' fill='white'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232563eb'/%3E%3Crect x='14' y='18' width='36' height='28' rx='3' fill='%230b1320'/%3E%3Crect x='14' y='26' width='36' height='6' fill='%23f59e0b'/%3E%3Crect x='28' y='30' width='8' height='12' fill='white'/%3E%3C/svg%3E">
     <style>
         /* الأساسيات */
         :root {
-            /* لوحة الألوان الجديدة */
-            --primary: #047857; /* أخضر زمردي */
-            --primary-700: #065f46;
-            --primary-800: #064e3b;
-            --secondary: #f59e0b; /* كهرماني */
+            /* لوحة الألوان الجديدة المحدثة */
+            --primary: #2563eb; /* أزرق ملكي أنيق */
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            --secondary: #f59e0b; /* ذهبي دافئ */
             --secondary-600: #d97706;
             --secondary-700: #b45309;
-            --accent: #10b981; /* أخضر فاتح للأزرار الثانوية */
+            --accent: #10b981; /* أخضر زمردي للأزرار الثانوية */
+            --accent-600: #059669;
+            --accent-700: #047857;
 
-            /* ألوان الواجهة */
-            --bg: #f8faf9;
+            /* ألوان الواجهة المحدثة */
+            --bg: #f8fafc;
             --surface: #ffffff;
-            --surface-2: #f5f7f6;
-            --text: #222;
-            --muted: #6b7280;
-            --border: #e5e7eb;
-            --ring: #86efac; /* تركيز يتماشى مع اللوحة */
+            --surface-2: #f1f5f9;
+            --surface-3: #e2e8f0;
+            --text: #1e293b;
+            --text-light: #475569;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --ring: #3b82f6; /* تركيز أزرق */
+
+            /* ألوان إضافية */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
 
             /* أزرار اجتماعية */
             --whatsapp: #25D366;
             --whatsapp-600: #1ebe5d;
+            --whatsapp-700: #1aad4a;
 
-            /* الشكل والظل */
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --shadow-sm: 0 2px 6px rgba(0,0,0,0.08);
-            --shadow-md: 0 8px 20px rgba(0,0,0,0.12);
-            --shadow-lg: 0 16px 40px rgba(0,0,0,0.16);
+            /* الشكل والظل المحسن */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --radius-xl: 18px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);
         }
 
         html[data-theme='dark'] {
-            --bg: #0b1412;
-            --surface: #0a1a16;
-            --surface-2: #0f2420;
-            --text: #e5e7eb;
-            --muted: #9aa4b2;
-            --border: #1f2937;
-            --ring: #34d399;
-            --primary: #10b981;
-            --primary-700: #059669;
-            --primary-800: #047857;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface-2: #334155;
+            --surface-3: #475569;
+            --text: #f1f5f9;
+            --text-light: #cbd5e1;
+            --muted: #94a3b8;
+            --border: #334155;
+            --ring: #3b82f6;
+            --primary: #3b82f6;
+            --primary-700: #2563eb;
+            --primary-800: #1d4ed8;
+            --primary-900: #1e40af;
             --secondary: #f59e0b;
             --secondary-600: #d97706;
             --secondary-700: #b45309;
+            --accent: #10b981;
+            --accent-600: #059669;
+            --accent-700: #047857;
             --whatsapp: #22c55e;
             --whatsapp-600: #16a34a;
+            --whatsapp-700: #15803d;
         }
         
         * {
@@ -88,21 +109,23 @@
         /* الهيدر مع القائمة المنسدلة */
         header {
             --header-bg: var(--primary);
-            background: linear-gradient(rgba(4,120,87,0.96), rgba(4,120,87,0.92));
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
             color: white;
             padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            box-shadow: var(--shadow-lg);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         header.scrolled {
             padding: 10px 0;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-            background: linear-gradient(rgba(6,95,70,0.98), rgba(6,95,70,0.94));
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-800) 100%);
         }
         
         /* شعار الموقع */
@@ -201,9 +224,10 @@
         /* البانر الرئيسي مع النص المتغير */
         .hero {
             background:
-                radial-gradient(circle at 20% 20%, rgba(245,158,11,0.18) 0%, transparent 50%),
-                radial-gradient(circle at 80% 30%, rgba(16,185,129,0.20) 0%, transparent 45%),
-                linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)),
+                radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(245, 158, 11, 0.20) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.10) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.50) 100%),
                 url('https://tawaf-kaaba.site/img/66.png');
             background-size: cover;
             background-position: center;
@@ -234,13 +258,20 @@
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.18);
-            border-radius: var(--radius-lg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 24px 24px 28px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: var(--radius-xl);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 32px 32px 36px;
             display: inline-block;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
         }
         
         @keyframes fadeInUp {
@@ -282,19 +313,21 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--secondary);
-            color: #1f2937;
-            padding: 12px 30px;
-            border-radius: 30px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-600) 100%);
+            color: white;
+            padding: 14px 32px;
+            border-radius: var(--radius-xl);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
             position: relative;
             overflow: hidden;
+            text-transform: none;
+            letter-spacing: 0.025em;
         }
         
         .btn:before {
@@ -304,8 +337,8 @@
             right: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: right 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: right 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .btn:hover:before {
@@ -317,37 +350,53 @@
             box-shadow: 0 0 0 3px var(--ring);
         }
 
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
         /* حالات التحويم لكل نوع زر */
-        .btn.btn-whatsapp { background-color: var(--whatsapp); color: white; }
-        .btn.btn-whatsapp:hover { background-color: var(--whatsapp-600); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn.btn-whatsapp { 
+            background: linear-gradient(135deg, var(--whatsapp) 0%, var(--whatsapp-600) 100%); 
+            color: white; 
+        }
+        .btn.btn-whatsapp:hover { 
+            background: linear-gradient(135deg, var(--whatsapp-600) 0%, var(--whatsapp-700) 100%); 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-lg); 
+        }
 
-        .btn.btn-phone { background-color: var(--primary); color: white; }
-        .btn.btn-phone:hover { background-color: var(--primary-700); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn.btn-phone { 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%); 
+            color: white; 
+        }
+        .btn.btn-phone:hover { 
+            background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-800) 100%); 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-lg); 
+        }
 
-        .btn.btn-price { background-color: var(--accent); color: white; }
-        .btn.btn-price:hover { background-color: #8f6800; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn.btn-price { 
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-600) 100%); 
+            color: white; 
+        }
+        .btn.btn-price:hover { 
+            background: linear-gradient(135deg, var(--accent-600) 0%, var(--accent-700) 100%); 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-lg); 
+        }
 
         /* زر افتراضي ذهبي (للروابط العامة) */
         .btn:not(.btn-whatsapp):not(.btn-phone):not(.btn-price):hover {
-            background-color: var(--secondary-600);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            background: linear-gradient(135deg, var(--secondary-600) 0%, var(--secondary-700) 100%);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
         
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-        }
-        
-        .btn-phone {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .btn-price {
-            background-color: var(--accent);
-            color: white;
-        }
         
         .btn i {
             margin-left: 8px;
@@ -368,16 +417,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             animation: pulse 2s infinite;
+            border: 2px solid rgba(255,255,255,0.2);
         }
         
         @keyframes pulse {
@@ -387,15 +437,17 @@
         }
         
         .contact-btn:hover {
-            transform: translateY(-5px) scale(1.1);
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(255,255,255,0.4);
         }
         
         .whatsapp {
-            background-color: #25D366;
+            background: linear-gradient(135deg, var(--whatsapp) 0%, var(--whatsapp-600) 100%);
         }
         
         .phone {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
         }
         
         .contact-btn span {
@@ -416,10 +468,11 @@
         
         /* الأقسام */
         section {
-            padding: 100px 0;
+            padding: 120px 0;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease;
+            position: relative;
         }
         
         section.visible {
@@ -427,29 +480,43 @@
             transform: translateY(0);
         }
         
+        /* خلفيات متدرجة للأقسام */
+        section:nth-child(even) {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+        }
+        
+        section:nth-child(odd) {
+            background: var(--bg);
+        }
+        
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary);
             display: inline-block;
-            padding-bottom: 10px;
+            padding: 20px 40px;
             position: relative;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
         }
         
         .section-title h2:after {
             content: '';
             position: absolute;
-            width: 80px;
-            height: 3px;
-            background-color: var(--secondary);
-            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--accent) 100%);
+            bottom: 8px;
             right: 50%;
             transform: translateX(50%);
+            border-radius: 2px;
             animation: expandWidth 1s ease;
         }
         
@@ -468,16 +535,29 @@
         }
         
         .package-card {
-            background-color: var(--surface);
-            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             transform: translateY(20px);
             opacity: 0;
+            position: relative;
+        }
+        
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .package-card.animate {
@@ -486,25 +566,58 @@
         }
         
         .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .package-card:hover::before {
+            opacity: 1;
         }
         
         .package-header {
-            background-color: var(--surface-2);
-            color: var(--text);
-            padding: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
+            color: white;
+            padding: 30px 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .package-icon { font-size: 2.5rem; margin-bottom: 15px; color: var(--secondary); }
+        .package-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+        }
+        
+        .package-icon { 
+            font-size: 3rem; 
+            margin-bottom: 15px; 
+            color: var(--secondary); 
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
         
         .package-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
         .package-features {
@@ -611,15 +724,29 @@
         }
         
         .hotel-card {
-            background-color: var(--surface);
-            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             transform: translateY(20px);
             opacity: 0;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .hotel-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .hotel-card.animate {
@@ -628,7 +755,12 @@
         }
         
         .hotel-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .hotel-card:hover::before {
+            opacity: 1;
         }
         
         .hotel-img {
@@ -719,15 +851,29 @@
         }
         
         .bus-card {
-            background-color: white;
-            border-radius: 10px;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             transform: translateY(20px);
             opacity: 0;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .bus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .bus-card.animate {
@@ -736,7 +882,12 @@
         }
         
         .bus-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .bus-card:hover::before {
+            opacity: 1;
         }
         
         .bus-img {
@@ -822,9 +973,21 @@
         
         /* الفوتر */
         footer {
-            background-color: var(--primary-800);
+            background: linear-gradient(135deg, var(--primary-800) 0%, var(--primary-900) 100%);
             color: white;
-            padding: 60px 0 30px;
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--accent) 100%);
         }
         
         .footer-content {
