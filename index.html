@@ -224,29 +224,30 @@
         }
         
         /* البانر الرئيسي مع النص المتغير */
-        .hero {
-            background:
-                radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.25) 0%, transparent 60%),
-                radial-gradient(circle at 80% 30%, rgba(245, 158, 11, 0.30) 0%, transparent 55%),
-                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.20) 0%, transparent 80%),
-                linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.60) 100%),
-                linear-gradient(45deg, 
-                    rgba(37, 99, 235, 0.1) 0%, 
-                    rgba(245, 158, 11, 0.1) 25%, 
-                    rgba(16, 185, 129, 0.1) 50%, 
-                    rgba(37, 99, 235, 0.1) 75%, 
-                    rgba(245, 158, 11, 0.1) 100%),
-                url('https://tawaf-kaaba.site/img/66.png');
-            background-size: cover, cover, cover, cover, 200px 200px, cover;
-            background-position: center, center, center, center, 0 0, center;
-            background-attachment: fixed, fixed, fixed, fixed, scroll, fixed;
-            color: white;
-            text-align: center;
-            padding: clamp(160px, 22vh, 220px) 0 110px;
-            margin-bottom: 50px;
-            position: relative;
-            overflow: hidden;
-        }
+       .hero {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.25) 0%, transparent 60%),
+        radial-gradient(circle at 80% 30%, rgba(245, 158, 11, 0.30) 0%, transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.20) 0%, transparent 80%),
+        linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.60) 100%),
+        linear-gradient(45deg, 
+            rgba(37, 99, 235, 0.1) 0%, 
+            rgba(245, 158, 11, 0.1) 25%, 
+            rgba(16, 185, 129, 0.1) 50%, 
+            rgba(37, 99, 235, 0.1) 75%, 
+            rgba(245, 158, 11, 0.1) 100%),
+        url('https://tawaf-kaaba.site/img/66.png');
+    background-size: cover, cover, cover, cover, 200px 200px, cover;
+    background-position: center, center, center, center, 0 0, center;
+    background-attachment: fixed, fixed, fixed, fixed, scroll, fixed;
+    background-repeat: no-repeat; /* إضافة هذه الخاصية */
+    color: white;
+    text-align: center;
+    padding: clamp(160px, 22vh, 220px) 0 110px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+}
         
         /* إضافة نمط هندسي متحرك للخلفية */
         .hero::before {
