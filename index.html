@@ -1308,6 +1308,87 @@ margin-bottom: 20px;
   padding-top: 40px !important;
 }
 
+/* سلايدر الفنادق */
+.hotel-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.hotel-card {
+  display: none;
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: opacity 0.7s ease;
+  padding-bottom: 20px;
+}
+
+.hotel-card.active {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.slider-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.slider-dots .dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: var(--border);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.slider-dots .dot.active {
+  background-color: var(--secondary);
+  transform: scale(1.2);
+}
+/* ألوان خلفيات مختلفة لكل فندق */
+.hotel-card:nth-child(1) {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); /* أزرق سماوي */
+}
+
+.hotel-card:nth-child(2) {
+  background: linear-gradient(135deg, #fff7ed 0%, #fde68a 100%); /* ذهبي ناعم */
+}
+
+.hotel-card:nth-child(3) {
+  background: linear-gradient(135deg, #ecfdf5 0%, #a7f3d0 100%); /* أخضر زمردي فاتح */
+}
+
+.hotel-card:nth-child(4) {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ddd6fe 100%); /* بنفسجي فاتح */
+}
+
+/* تحسين شكل النصوص داخل الكروت */
+.hotel-info h3 {
+  color: var(--primary-800);
+}
+
+.hotel-distance {
+  color: var(--secondary);
+}
+
+.hotel-feature i {
+  color: var(--primary);
+}
+.hotel-card:hover {
+  filter: brightness(0.95);
+}
+
+
     </style>
 </head>
 <body>
@@ -1571,162 +1652,84 @@ margin-bottom: 20px;
     </section>
 
     <!-- قسم الفنادق - 4 كروت -->
-    <section id="hotels" class="hotels">
-        <div class="container">
-            <div class="section-title">
-                <h2>فنادقنا المميزة</h2>
-            </div>
-            <div class="hotels-grid">
-                <!-- الفندق الأول -->
-                <div class="hotel-card">
-                    <div class="hotel-img" style="background-image: url('https://www.besthotelinmecca.net/data/Imgs/OriginalPhoto/15437/1543750/1543750306/img-m-hotel-makkah-by-millennium-mecca-4.JPEG');"></div>
-                    <div class="hotel-info">
-                        <h3>فندق إم هوتل مكة باي ميلينيوم</h3>
-                        <div class="hotel-distance">2,710 متر من الحرم</div>
-                        <div class="hotel-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>شارع إبراهيم الخليل، مكة المكرمة</span>
-                        </div>
-                        <div class="hotel-features">
-                            <div class="hotel-feature">
-                                <i class="fas fa-wifi"></i>
-                                <span>واي فاي مجاني</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-shuttle-van"></i>
-                                <span>خدمة نقل مجانية إلى الحرم</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-dumbbell"></i>
-                                <span>مركز للياقة البدنية</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-concierge-bell"></i>
-                                <span>مكتب استقبال 24 ساعة</span>
-                            </div>
-                        </div>
-                        <div class="hotel-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق إم هوتل مكة باي ميلينيوم" class="btn btn-price" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-tag"></i>
-                                استفسار عن الأسعار
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- الفندق الثاني -->
-                <div class="hotel-card">
-                    <div class="hotel-img" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/463246228.jpg?k=2e3c3a2267b3e5fbd085c604d8eb14149c86ddcf189569b81172fdeea73e71f0&o=');"></div>
-                    <div class="hotel-info">
-                        <h3>فوكو مكة (إيه آي جيه هوتيل)</h3>
-                        <div class="hotel-distance">1,500 متر من الحرم</div>
-                        <div class="hotel-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>شارع إبراهيم الخليل، مكة المكرمة</span>
-                        </div>
-                        <div class="hotel-features">
-                            <div class="hotel-feature">
-                                <i class="fas fa-wifi"></i>
-                                <span>واي فاي مجاني</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-shuttle-van"></i>
-                                <span>خدمة نقل مجانية إلى الحرم</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-concierge-bell"></i>
-                                <span>خدمة كونسييرج</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-money-bill-wave"></i>
-                                <span>صراف آلي</span>
-                            </div>
-                        </div>
-                        <div class="hotel-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فوكو مكة (إيه آي جيه هوتيل)" class="btn btn-price" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-tag"></i>
-                                استفسار عن الأسعار
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- الفندق الثالث -->
-                <div class="hotel-card">
-                    <div class="hotel-img" style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4no3Zt8NSocImgvMHd7dDgWQHmE8ihtBBsf3-qz4IZUYN_Xp7mSAR8zVydD0eBDrHnnVJkWQe08OFQZ8qsHr1hmIj57KmUSPyMBOmnFsa2KBmM_BDIJgLR8SB1Zu_SicHEd4uVzB=s1360-w1360-h1020-rw');"></div>
-                    <div class="hotel-info">
-                        <h3>فندق بارك رويال</h3>
-                        <div class="hotel-distance">1,200 متر من الحرم</div>
-                        <div class="hotel-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>شارع إبراهيم الخليل، مكة المكرمة</span>
-                        </div>
-                        <div class="hotel-features">
-                            <div class="hotel-feature">
-                                <i class="fas fa-wifi"></i>
-                                <span>واي فاي مجاني</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-tv"></i>
-                                <span>تلفاز مع قنوات فضائية</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-snowflake"></i>
-                                <span>تكييف هواء</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-umbrella-beach"></i>
-                                <span>شرفة تطل على المدينة</span>
-                            </div>
-                        </div>
-                        <div class="hotel-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق مكة" class="btn btn-price" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-tag"></i>
-                                استفسار عن الأسعار
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- الفندق الرابع -->
-                <div class="hotel-card">
-                    <div class="hotel-img" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/490718402.jpg?k=65e5e80d21b22c1e90e2e77b916f062313562512f048594de3e818ba0cf63756&o=');"></div>
-                    <div class="hotel-info">
-                        <h3>فندق فلسطين مكة</h3>
-                        <div class="hotel-distance">800 متر من الحرم</div>
-                        <div class="hotel-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>شارع إبراهيم الخليل، مكة المكرمة</span>
-                        </div>
-                        <div class="hotel-features">
-                            <div class="hotel-feature">
-                                <i class="fas fa-wifi"></i>
-                                <span>واي فاي مجاني</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-snowflake"></i>
-                                <span>تكييف هواء</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-utensils"></i>
-                                <span>مطعم</span>
-                            </div>
-                            <div class="hotel-feature">
-                                <i class="fas fa-broom"></i>
-                                <span>خدمة تنظيف يومية</span>
-                            </div>
-                        </div>
-                        <div class="hotel-buttons">
-                            <a href="https://wa.me/966541392197?text=مرحباً، أريد الاستفسار عن أسعار فندق فلسطين مكة" class="btn btn-price" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-tag"></i>
-                                استفسار عن الأسعار
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- قسم الفنادق - سلايدر -->
+<section id="hotels" class="hotels">
+  <div class="container">
+    <div class="section-title">
+      <h2>فنادقنا المميزة</h2>
+    </div>
+
+    <!-- السلايدر -->
+    <div class="hotel-slider">
+      <div class="hotel-card active">
+        <div class="hotel-img" style="background-image: url('https://www.besthotelinmecca.net/data/Imgs/OriginalPhoto/15437/1543750/1543750306/img-m-hotel-makkah-by-millennium-mecca-4.JPEG');"></div>
+        <div class="hotel-info">
+          <h3>فندق إم هوتل مكة باي ميلينيوم</h3>
+          <div class="hotel-distance">2,710 متر من الحرم</div>
+          <div class="hotel-location"><i class="fas fa-map-marker-alt"></i> شارع إبراهيم الخليل، مكة المكرمة</div>
+          <div class="hotel-features">
+            <div class="hotel-feature"><i class="fas fa-wifi"></i> واي فاي مجاني</div>
+            <div class="hotel-feature"><i class="fas fa-shuttle-van"></i> خدمة نقل مجانية إلى الحرم</div>
+            <div class="hotel-feature"><i class="fas fa-dumbbell"></i> مركز للياقة البدنية</div>
+            <div class="hotel-feature"><i class="fas fa-concierge-bell"></i> مكتب استقبال 24 ساعة</div>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <div class="hotel-card">
+        <div class="hotel-img" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/463246228.jpg?k=2e3c3a2267b3e5fbd085c604d8eb14149c86ddcf189569b81172fdeea73e71f0&o=');"></div>
+        <div class="hotel-info">
+          <h3>فوكو مكة (إيه آي جيه هوتيل)</h3>
+          <div class="hotel-distance">1,500 متر من الحرم</div>
+          <div class="hotel-location"><i class="fas fa-map-marker-alt"></i> شارع إبراهيم الخليل، مكة المكرمة</div>
+          <div class="hotel-features">
+            <div class="hotel-feature"><i class="fas fa-wifi"></i> واي فاي مجاني</div>
+            <div class="hotel-feature"><i class="fas fa-shuttle-van"></i> خدمة نقل مجانية إلى الحرم</div>
+            <div class="hotel-feature"><i class="fas fa-concierge-bell"></i> خدمة كونسييرج</div>
+            <div class="hotel-feature"><i class="fas fa-money-bill-wave"></i> صراف آلي</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card">
+        <div class="hotel-img" style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4no3Zt8NSocImgvMHd7dDgWQHmE8ihtBBsf3-qz4IZUYN_Xp7mSAR8zVydD0eBDrHnnVJkWQe08OFQZ8qsHr1hmIj57KmUSPyMBOmnFsa2KBmM_BDIJgLR8SB1Zu_SicHEd4uVzB=s1360-w1360-h1020-rw');"></div>
+        <div class="hotel-info">
+          <h3>فندق بارك رويال</h3>
+          <div class="hotel-distance">1,200 متر من الحرم</div>
+          <div class="hotel-location"><i class="fas fa-map-marker-alt"></i> شارع إبراهيم الخليل، مكة المكرمة</div>
+          <div class="hotel-features">
+            <div class="hotel-feature"><i class="fas fa-tv"></i> تلفاز مع قنوات فضائية</div>
+            <div class="hotel-feature"><i class="fas fa-snowflake"></i> تكييف هواء</div>
+            <div class="hotel-feature"><i class="fas fa-umbrella-beach"></i> شرفة تطل على المدينة</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card">
+        <div class="hotel-img" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/490718402.jpg?k=65e5e80d21b22c1e90e2e77b916f062313562512f048594de3e818ba0cf63756&o=');"></div>
+        <div class="hotel-info">
+          <h3>فندق فلسطين مكة</h3>
+          <div class="hotel-distance">800 متر من الحرم</div>
+          <div class="hotel-location"><i class="fas fa-map-marker-alt"></i> شارع إبراهيم الخليل، مكة المكرمة</div>
+          <div class="hotel-features">
+            <div class="hotel-feature"><i class="fas fa-wifi"></i> واي فاي مجاني</div>
+            <div class="hotel-feature"><i class="fas fa-snowflake"></i> تكييف هواء</div>
+            <div class="hotel-feature"><i class="fas fa-utensils"></i> مطعم</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- النقاط -->
+    <div class="slider-dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
+    </div>
+  </div>
+</section>
+
 
     <!-- قسم الباصات - كرتين فقط -->
     <section id="buses" class="buses">
@@ -2024,6 +2027,31 @@ margin-bottom: 20px;
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
+		
+		// سلايدر الفنادق
+const hotelCards = document.querySelectorAll('.hotel-card');
+const dots = document.querySelectorAll('.dot');
+let currentHotel = 0;
+
+function showHotel(index) {
+  hotelCards.forEach((card, i) => {
+    card.classList.toggle('active', i === index);
+    dots[i].classList.toggle('active', i === index);
+  });
+  currentHotel = index;
+}
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    showHotel(Number(dot.dataset.index));
+  });
+});
+
+setInterval(() => {
+  let next = (currentHotel + 1) % hotelCards.length;
+  showHotel(next);
+}, 4000);
+
     </script>
     <!-- SEO Hidden Content - Start -->
 <div itemscope itemtype="https://schema.org/TravelAgency" style="display: none;">
