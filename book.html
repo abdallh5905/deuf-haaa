@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>احجز رحلتك | طريق الإيمان</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e3a8a;
+      --gold: #f59e0b;
+      --gold-dark: #d97706;
+      --bg: #f8fafc;
+    }
+
+    body {
+      font-family: "Tajawal", sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: #1e293b;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 12px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav .logo:hover { color: var(--gold); }
+
+    .banner {
+      background: linear-gradient(135deg, rgba(30,64,175,0.92), rgba(37,99,235,0.85)),
+        url('https://tawaf-kaaba.site/img/66.png') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .banner h1 { font-size: 2.2rem; margin-bottom: 10px; }
+    .banner p { color: #e2e8f0; font-size: 1.1rem; }
+
+    .form-section {
+      background: #fff;
+      max-width: 800px;
+      margin: -60px auto 80px;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .form-header::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      right: 10%;
+      height: 4px;
+      background: #e5e7eb;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .step {
+      background: #e5e7eb;
+      color: #1e293b;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      z-index: 1;
+      transition: 0.3s;
+    }
+
+    .step.active {
+      background: var(--gold);
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .form-step {
+      display: none;
+      animation: fadeSlide 0.7s ease forwards;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .input-box {
+      display: flex;
+      align-items: center;
+      background: #f9fafb;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 10px 14px;
+      transition: 0.3s;
+      margin-bottom: 15px;
+    }
+
+    .input-box i {
+      color: var(--gold-dark);
+      font-size: 1.1rem;
+      margin-left: 10px;
+    }
+
+    .input-box input,
+    .input-box select,
+    .input-box textarea {
+      border: none;
+      background: transparent;
+      width: 100%;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #1e293b;
+      outline: none;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .btn {
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover { background: var(--gold-dark); }
+
+    textarea {
+      min-height: 100px;
+      resize: none;
+      width: 100%;
+    }
+
+    /* --- أزرار واتساب واتصال --- */
+    .fixed-btn {
+      position: fixed;
+      bottom: 25px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      transition: 0.3s;
+      z-index: 999;
+      text-decoration: none;
+    }
+
+    .fixed-btn:hover { transform: scale(1.1); }
+
+    .fixed-btn.whatsapp {
+      background: #25d366;
+      left: 25px;
+    }
+
+    .fixed-btn.phone {
+      background: var(--gold);
+      right: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .form-header { flex-wrap: wrap; gap: 10px; }
+      .form-step { animation: none; }
+      .fixed-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="logo">طريق الإيمان</a>
+  </nav>
+
+  <!-- BANNER -->
+  <section class="banner">
+    <h1>احجز رحلتك الآن</h1>
+    <p>راحة ورفاهية في كل تفاصيل رحلتك مع طريق الإيمان</p>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section">
+    <div class="form-header">
+      <div class="step active"><i class="fas fa-kaaba"></i></div>
+      <div class="step"><i class="fas fa-chair"></i></div>
+      <div class="step"><i class="fas fa-calendar-alt"></i></div>
+      <div class="step"><i class="fas fa-user"></i></div>
+    </div>
+
+    <form id="bookingForm">
+
+      <!-- STEP 1 -->
+      <div class="form-step active">
+        <label>وجهة الرحلة</label>
+        <div class="input-box"><i class="fas fa-location-dot"></i>
+          <select id="destination" required>
+            <option value="">اختر الوجهة</option>
+            <option value="مكة المكرمة">مكة المكرمة</option>
+            <option value="المدينة المنورة">المدينة المنورة</option>
+            <option value="مكة والمدينة">مكة والمدينة</option>
+          </select>
+        </div>
+
+        <div class="input-box"><i class="fas fa-crown"></i>
+          <select id="package" required>
+            <option value="">نوع الرحلة</option>
+            <option value="اقتصادية">اقتصادية</option>
+            <option value="VIP">VIP</option>
+          </select>
+        </div>
+
+        <div class="buttons">
+          <div></div>
+          <button type="button" class="btn next-step">التالي <i class="fas fa-arrow-left"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="form-step">
+        <label>عدد المقاعد</label>
+        <div class="input-box"><i class="fas fa-chair"></i>
+          <input type="number" id="seats" min="1" required placeholder="عدد المقاعد المطلوبة">
+        </div>
+
+        <label>عدد الغرف</label>
+        <div class="input-box"><i class="fas fa-bed"></i>
+          <input type="number" id="rooms" min="1" required placeholder="عدد الغرف المطلوبة">
+        </div>
+
+        <div class="buttons">
+          <button type="button" class="btn prev-step"><i class="fas fa-arrow-right"></i> السابق</button>
+          <button type="button" class="btn next-step">التالي <i class="fas fa-arrow-left"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="form-step">
+        <label>عدد الأيام</label>
+        <div class="input-box"><i class="fas fa-clock"></i>
+          <input type="number" id="days" min="1" required placeholder="كم عدد الأيام؟">
+        </div>
+
+        <label>تاريخ الرحلة</label>
+        <div class="input-box"><i class="fas fa-calendar-alt"></i>
+          <input type="date" id="date" required>
+        </div>
+
+        <div class="buttons">
+          <button type="button" class="btn prev-step"><i class="fas fa-arrow-right"></i> السابق</button>
+          <button type="button" class="btn next-step">التالي <i class="fas fa-arrow-left"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="form-step">
+        <label>الاسم الكامل</label>
+        <div class="input-box"><i class="fas fa-user"></i>
+          <input type="text" id="name" required placeholder="اكتب اسمك الكامل">
+        </div>
+
+        <label>رقم الجوال</label>
+        <div class="input-box"><i class="fas fa-phone"></i>
+          <input type="tel" id="phone" required placeholder="مثال: 054xxxxxxx">
+        </div>
+
+        <label>ملاحظات إضافية</label>
+        <textarea id="notes" placeholder="هل لديك أي ملاحظات أو طلبات خاصة؟"></textarea>
+
+        <div class="buttons">
+          <button type="button" class="btn prev-step"><i class="fas fa-arrow-right"></i> السابق</button>
+          <button type="submit" class="btn"><i class="fab fa-whatsapp"></i> احجز الآن</button>
+        </div>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- FIXED BUTTONS -->
+  <a href="https://wa.me/966541392197" target="_blank" class="fixed-btn whatsapp" title="تواصل عبر واتساب">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <a href="tel:0541392197" class="fixed-btn phone" title="اتصال مباشر">
+    <i class="fas fa-phone"></i>
+  </a>
+
+  <script>
+    const steps = document.querySelectorAll(".step");
+    const formSteps = document.querySelectorAll(".form-step");
+    let currentStep = 0;
+
+    function showStep(index) {
+      formSteps.forEach((step, i) => step.classList.toggle("active", i === index));
+      steps.forEach((s, i) => s.classList.toggle("active", i === index));
+    }
+
+    document.querySelectorAll(".next-step").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (currentStep < formSteps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      });
+    });
+
+    document.querySelectorAll(".prev-step").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+    });
+
+    document.getElementById("bookingForm").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const data = {
+        destination: document.getElementById("destination").value,
+        pkg: document.getElementById("package").value,
+        seats: document.getElementById("seats").value,
+        rooms: document.getElementById("rooms").value,
+        days: document.getElementById("days").value,
+        date: document.getElementById("date").value,
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        notes: document.getElementById("notes").value
+      };
+
+      const msg =
+        `مرحباً، أود حجز رحلة عمرة:\n\n` +
+        `🏙 الوجهة: ${data.destination}\n🎯 نوع الرحلة: ${data.pkg}\n💺 المقاعد: ${data.seats}\n🏨 الغرف: ${data.rooms}\n🕒 الأيام: ${data.days}\n📅 التاريخ: ${data.date}\n👤 الاسم: ${data.name}\n📱 الجوال: ${data.phone}\n📝 ملاحظات: ${data.notes || "لا يوجد"}`;
+
+      window.open(`https://wa.me/966541392197?text=${encodeURIComponent(msg)}`, "_blank");
+    });
+  </script>
+</body>
+</html>
