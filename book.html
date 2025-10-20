@@ -23,17 +23,107 @@
       overflow-x: hidden;
     }
 
-    nav {
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 12px 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+/* Navbar */
+header {
+  --header-bg: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
+  color: white;
+  padding: 15px 0;
+  box-shadow: var(--shadow-lg);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+header.scrolled {
+  padding: 10px 0;
+  background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-800) 100%);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  margin-left: 10px;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: var(--primary);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 15px 20px;
+  }
+}
+
 
     nav .logo {
       font-size: 1.5rem;
@@ -228,6 +318,40 @@
 
   <!-- NAVBAR -->
 <!-- ====== Navbar Start ====== -->
+<!-- ====== Navbar Start ====== -->
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a class="logo" href="index.html" aria-label="الصفحة الرئيسية">
+        <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="10" y="18" width="44" height="28" rx="6" fill="#0b1320"/>
+          <rect x="10" y="26" width="44" height="6" fill="#f59e0b"/>
+          <rect x="28" y="30" width="8" height="12" fill="#ffffff"/>
+        </svg>
+        <h1>طريق الإيمان</h1>
+      </a>
+      <div class="header-actions">
+        <button class="theme-toggle" aria-label="تبديل الوضع">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="primary-nav">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <nav>
+        <ul id="primary-nav">
+          <li><a href="index.html#packages">الباقات</a></li>
+          <li><a href="index.html#why-us">لماذا تختارنا</a></li>
+          <li><a href="index.html#hotels">الفنادق</a></li>
+          <li><a href="index.html#buses">الباصات</a></li>
+          <li><a href="faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="book.html" style="color: var(--secondary); font-weight:700;">احجز الآن</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<!-- ====== Navbar End ====== -->
 
 <!-- ====== Navbar End ====== -->
 
