@@ -10,16 +10,18 @@
     :root {
       --primary: #2563eb;
       --primary-700: #1d4ed8;
+      --primary-800: #1e40af;
       --secondary: #f59e0b;
-      --whatsapp: #25D366;
       --bg: #f8fafc;
-      --surface: #fff;
+      --surface: #ffffff;
       --text: #1e293b;
       --muted: #64748b;
       --radius-lg: 14px;
       --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
       --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+      --whatsapp: #25D366;
     }
+
     body {
       font-family: 'Tajawal', sans-serif;
       background-color: var(--bg);
@@ -27,33 +29,100 @@
       color: var(--text);
       line-height: 1.7;
     }
+
+    /* الهيدر */
     header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
       color: white;
-      padding: 20px 0;
-      text-align: center;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-lg);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
     }
-    header h1 {
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .logo svg {
+      width: 38px;
+      height: 38px;
+      margin-left: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
       margin: 0;
-      font-size: 1.8rem;
+      padding: 0;
     }
+
+    nav ul li {
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--secondary);
+    }
+
+    .theme-toggle, .menu-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* FAQ */
+    main {
+      margin-top: 100px;
+      padding: 40px 20px;
+    }
+
     .faq-container {
       max-width: 900px;
-      margin: 50px auto;
+      margin: 0 auto;
       background: var(--surface);
       padding: 30px;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
     }
+
     .faq-item {
       border-bottom: 1px solid #e5e7eb;
       padding: 15px 0;
-      transition: all 0.3s ease;
     }
-    .faq-item:last-child {
-      border-bottom: none;
-    }
+
+    .faq-item:last-child { border-bottom: none; }
+
     .faq-question {
       cursor: pointer;
       display: flex;
@@ -63,38 +132,20 @@
       font-weight: 600;
       font-size: 1.1rem;
     }
-    .faq-question:hover {
-      color: var(--secondary);
-    }
+
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s ease, opacity 0.5s ease;
       opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
       color: var(--muted);
       padding-right: 10px;
     }
+
     .faq-item.active .faq-answer {
       max-height: 300px;
       opacity: 1;
       margin-top: 10px;
-    }
-    .faq-item i {
-      transition: transform 0.3s ease;
-    }
-    .faq-item.active i {
-      transform: rotate(180deg);
-    }
-    footer {
-      text-align: center;
-      padding: 40px 10px;
-      background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary) 100%);
-      color: white;
-      margin-top: 60px;
-    }
-    footer a {
-      color: var(--secondary);
-      text-decoration: none;
     }
 
     /* الأزرار الثابتة */
@@ -107,6 +158,7 @@
       flex-direction: column;
       gap: 10px;
     }
+
     .contact-btn {
       display: flex;
       align-items: center;
@@ -121,130 +173,19 @@
       transition: all 0.3s;
       border: 2px solid rgba(255,255,255,0.2);
     }
+
     .contact-btn:hover {
       transform: translateY(-6px) scale(1.1);
     }
+
     .whatsapp {
       background: linear-gradient(135deg, var(--whatsapp) 0%, #1ebe5d 100%);
     }
+
     .phone {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
     }
+
     .contact-btn span {
       position: absolute;
-      right: 70px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .contact-btn:hover span {
-      opacity: 1;
-    }
-
-    @media (max-width: 768px) {
-      .contact-buttons {
-        left: 10px;
-        bottom: 10px;
-      }
-      .contact-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>الأسئلة الشائعة</h1>
-    <p>إجابات لأهم استفساراتكم حول رحلات العمرة</p>
-  </header>
-
-  <section class="faq-container">
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>ما هي مواعيد رحلات العمرة من الرياض؟</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        تنطلق رحلات العمرة يوميًا من الرياض إلى مكة المكرمة، كما تتوفر رحلات أسبوعية تشمل زيارة المدينة المنورة. يمكنك الحجز مسبقًا عبر واتساب أو الاتصال المباشر.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>هل الرحلات تشمل الإقامة في الفنادق؟</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        نعم، جميع باقات العمرة لدينا تشمل الإقامة في فنادق مختارة بعناية، تتراوح من 3 إلى 5 نجوم حسب الباقة التي تختارها.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>ما الفرق بين الباقة الاقتصادية وباقة VIP؟</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        الباقة الاقتصادية مناسبة للراغبين في أداء العمرة بتكلفة منخفضة مع خدمات أساسية ممتازة. أما باقة VIP فتشمل فنادق 5 نجوم، باصات فاخرة، وخدمة مرافقة خاصة.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>هل يمكن حجز عمرة للعائلات أو المجموعات؟</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        بالتأكيد، نوفر برامج خاصة للعائلات والمجموعات مع خصومات مميزة وخدمة تنسيق كاملة من الاستقبال حتى العودة.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>كيف يمكنني الحجز أو الاستفسار؟</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="faq-answer">
-        يمكنك الحجز أو الاستفسار مباشرة عبر واتساب على الرقم 
-        <a href="https://wa.me/966541392197" target="_blank">0541392197</a> أو الاتصال الهاتفي.
-      </div>
-    </div>
-  </section>
-
-  <!-- الأزرار الثابتة -->
-  <div class="contact-buttons">
-    <a href="https://wa.me/966541392197" class="contact-btn whatsapp" target="_blank" rel="noopener noreferrer">
-      <i class="fab fa-whatsapp"></i>
-      <span>تواصل عبر واتساب</span>
-    </a>
-    <a href="tel:0541392197" class="contact-btn phone">
-      <i class="fas fa-phone"></i>
-      <span>اتصل الآن</span>
-    </a>
-  </div>
-
-  <footer>
-    <p>© 2025 طريق الإيمان | تصميم <a href="https://wa.me/201025116712" target="_blank">عبدالله محمد</a></p>
-  </footer>
-
-  <script>
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-      item.querySelector('.faq-question').addEventListener('click', () => {
-        item.classList.toggle('active');
-        faqItems.forEach(other => {
-          if (other !== item) other.classList.remove('active');
-        });
-      });
-    });
-  </script>
-
-</body>
-</html>
+      right: 7
