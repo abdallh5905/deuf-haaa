@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الأسئلة الشائعة | طريق الإيمان</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-700: #1d4ed8;
+      --secondary: #f59e0b;
+      --whatsapp: #25D366;
+      --bg: #f8fafc;
+      --surface: #fff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --radius-lg: 14px;
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+    }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--bg);
+      margin: 0;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .faq-container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: var(--surface);
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 15px 0;
+      transition: all 0.3s ease;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .faq-question:hover {
+      color: var(--secondary);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+      color: var(--muted);
+      padding-right: 10px;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+    .faq-item i {
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active i {
+      transform: rotate(180deg);
+    }
+    footer {
+      text-align: center;
+      padding: 40px 10px;
+      background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary) 100%);
+      color: white;
+      margin-top: 60px;
+    }
+    footer a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    /* الأزرار الثابتة */
+    .contact-buttons {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .contact-btn:hover {
+      transform: translateY(-6px) scale(1.1);
+    }
+    .whatsapp {
+      background: linear-gradient(135deg, var(--whatsapp) 0%, #1ebe5d 100%);
+    }
+    .phone {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-700) 100%);
+    }
+    .contact-btn span {
+      position: absolute;
+      right: 70px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .contact-btn:hover span {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .contact-buttons {
+        left: 10px;
+        bottom: 10px;
+      }
+      .contact-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>الأسئلة الشائعة</h1>
+    <p>إجابات لأهم استفساراتكم حول رحلات العمرة</p>
+  </header>
+
+  <section class="faq-container">
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>ما هي مواعيد رحلات العمرة من الرياض؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        تنطلق رحلات العمرة يوميًا من الرياض إلى مكة المكرمة، كما تتوفر رحلات أسبوعية تشمل زيارة المدينة المنورة. يمكنك الحجز مسبقًا عبر واتساب أو الاتصال المباشر.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>هل الرحلات تشمل الإقامة في الفنادق؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        نعم، جميع باقات العمرة لدينا تشمل الإقامة في فنادق مختارة بعناية، تتراوح من 3 إلى 5 نجوم حسب الباقة التي تختارها.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>ما الفرق بين الباقة الاقتصادية وباقة VIP؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        الباقة الاقتصادية مناسبة للراغبين في أداء العمرة بتكلفة منخفضة مع خدمات أساسية ممتازة. أما باقة VIP فتشمل فنادق 5 نجوم، باصات فاخرة، وخدمة مرافقة خاصة.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>هل يمكن حجز عمرة للعائلات أو المجموعات؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        بالتأكيد، نوفر برامج خاصة للعائلات والمجموعات مع خصومات مميزة وخدمة تنسيق كاملة من الاستقبال حتى العودة.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>كيف يمكنني الحجز أو الاستفسار؟</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        يمكنك الحجز أو الاستفسار مباشرة عبر واتساب على الرقم 
+        <a href="https://wa.me/966541392197" target="_blank">0541392197</a> أو الاتصال الهاتفي.
+      </div>
+    </div>
+  </section>
+
+  <!-- الأزرار الثابتة -->
+  <div class="contact-buttons">
+    <a href="https://wa.me/966541392197" class="contact-btn whatsapp" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-whatsapp"></i>
+      <span>تواصل عبر واتساب</span>
+    </a>
+    <a href="tel:0541392197" class="contact-btn phone">
+      <i class="fas fa-phone"></i>
+      <span>اتصل الآن</span>
+    </a>
+  </div>
+
+  <footer>
+    <p>© 2025 طريق الإيمان | تصميم <a href="https://wa.me/201025116712" target="_blank">عبدالله محمد</a></p>
+  </footer>
+
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        item.classList.toggle('active');
+        faqItems.forEach(other => {
+          if (other !== item) other.classList.remove('active');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
