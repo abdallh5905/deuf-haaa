@@ -188,4 +188,170 @@
 
     .contact-btn span {
       position: absolute;
-      right: 7
+      right: 70px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .contact-btn:hover span {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 10px;
+      background: linear-gradient(135deg, var(--primary-800) 0%, var(--primary) 100%);
+      color: white;
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: var(--primary-800);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 20px 0;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      nav ul li {
+        text-align: center;
+        margin: 10px 0;
+      }
+      .contact-buttons {
+        left: 10px;
+        bottom: 10px;
+      }
+      .contact-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="18" width="44" height="28" rx="6" fill="#0b1320"/>
+          <rect x="10" y="26" width="44" height="6" fill="var(--secondary)"/>
+          <rect x="28" y="30" width="8" height="12" fill="#ffffff"/>
+        </svg>
+        طريق الإيمان
+      </a>
+      <button class="menu-toggle" aria-label="فتح القائمة">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul id="nav-links">
+          <li><a href="index.html#packages">الباقات</a></li>
+          <li><a href="index.html#hotels">الفنادق</a></li>
+          <li><a href="index.html#buses">الباصات</a></li>
+          <li><a href="faq.html">الأسئلة الشائعة</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="faq-container">
+      <h2 style="text-align:center; color:var(--primary); margin-bottom:30px;">الأسئلة الشائعة</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>ما هي مواعيد رحلات العمرة من الرياض؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          تنطلق الرحلات يوميًا من الرياض إلى مكة المكرمة، كما تتوفر رحلات أسبوعية تشمل زيارة المدينة المنورة. يمكن الحجز عبر واتساب أو الاتصال المباشر.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>هل الرحلات تشمل الإقامة في الفنادق؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          نعم، جميع الباقات تشمل الإقامة في فنادق مختارة بعناية من 3 إلى 5 نجوم حسب اختياركم.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>هل هناك باقات خاصة بالعائلات والمجموعات؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          نعم، نوفر عروضًا خاصة للعائلات والمجموعات مع خصومات وخدمة تنسيق متكاملة.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>كيف يمكنني الحجز أو الاستفسار؟</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          يمكنك التواصل معنا عبر واتساب على الرقم 
+          <a href="https://wa.me/966541392197" target="_blank">0541392197</a> 
+          أو الاتصال المباشر بنفس الرقم.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- أزرار واتساب واتصال -->
+  <div class="contact-buttons">
+    <a href="https://wa.me/966541392197" class="contact-btn whatsapp" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-whatsapp"></i>
+      <span>تواصل عبر واتساب</span>
+    </a>
+    <a href="tel:0541392197" class="contact-btn phone">
+      <i class="fas fa-phone"></i>
+      <span>اتصل الآن</span>
+    </a>
+  </div>
+
+  <footer>
+    <p>© 2025 طريق الإيمان | تصميم <a href="https://wa.me/201025116712" target="_blank">عبدالله محمد</a></p>
+  </footer>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        item.classList.toggle('active');
+        faqItems.forEach(other => {
+          if (other !== item) other.classList.remove('active');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
